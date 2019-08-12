@@ -1,5 +1,6 @@
 package com.example.ribbon.Controller;
 
+import com.example.ribbon.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,18 @@ public class RibbonController {
 
     @Autowired
     RestTemplate restTemplate;
+
+
+    @Autowired
+    private HelloService helloService;
+
+
+    @GetMapping(value = "/consumer1")
+    public String helloController1() {
+        return helloService.hello();
+    }
+
+
 
     @GetMapping(value = "/consumer")
     public String helloController() {
